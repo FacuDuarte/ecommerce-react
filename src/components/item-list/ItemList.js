@@ -30,7 +30,7 @@ const ItemList = () => {
             {isLoading && <h3>Loading...</h3>}
             {isFinished && <h2>Se ha finalizado la respuesta</h2>}
             {currentProducts.map(products => (
-                <Item {...products} />
+                <Item key={products.id} {...products} />
             ))}
         </div>
     )

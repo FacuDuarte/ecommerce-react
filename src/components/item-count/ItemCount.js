@@ -17,7 +17,7 @@ function ItemCount ({stock, inicial}) {
                 <p id="numero">{count}</p>
                 <div>
                     <button id="restar" onClick={decrement}>-</button>
-                    <button onClick={increment} disabled={count==stock?true:false}>+</button>
+                    <button onClick={increment} disabled={count===stock?true:false}>+</button>
                     <button >Agregar al carrito</button>
                 </div>
             </div>

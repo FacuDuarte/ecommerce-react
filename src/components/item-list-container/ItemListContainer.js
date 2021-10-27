@@ -9,7 +9,9 @@ export const ItemListContainer = ({greeting}) => {
         <div>
             <h3 className="ItemList">{greeting}</h3>
             <ItemList />
-            <ItemCount stock={7} inicial={1}/>
+            <br/>
+            <hr/>
+            <br/>
         </div>
     )
 }
