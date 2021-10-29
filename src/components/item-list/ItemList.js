@@ -1,34 +1,44 @@
 import { products } from '../data/products'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Item from '../item/Item'
+import './ContainerItems.css'
+import { useParams } from 'react-router'
 
 const ItemList = () => {
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [isFinished, setisFinished] = useState(false);
+    const {categoryId} = useParams()
+
     const [currentProducts, setCurrentProducts] = useState([]);
-   
-    const task = new Promise ((resolve, reject) => {
+    
+    useEffect(() => {
+        if (categoryId) {
+            const task = new Promise ((resolve) => {
+                setTimeout(() => {
+                    resolve(products)
+                }, 1500);
+            })
+
+            task
+            .then((result)=>{
+                setCurrentProducts(result)
+            })
+        }
+    }, [categoryId])
+
+    
+    const task = new Promise ((resolve) => {
         setTimeout(() => {
             resolve(products)
-        }, 2000); 
+        }, 1500); 
     })
 
     task
     .then((result)=>{
         setCurrentProducts(result)
     })
-    .finally(()=>{
-        setisFinished(true)
-        setIsLoading(false)
-    })
  
-
     return (
-        <div>
-            <h1>Promises</h1>
-            {isLoading && <h3>Loading...</h3>}
-            {isFinished && <h2>Se ha finalizado la respuesta</h2>}
+        <div className="Container container row justify-content-center mx-auto">
             {currentProducts.map(products => (
                 <Item key={products.id} {...products} />
             ))}
