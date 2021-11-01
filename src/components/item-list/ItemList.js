@@ -26,16 +26,24 @@ const ItemList = () => {
     }, [categoryId])
 
     
-    const task = new Promise ((resolve) => {
-        setTimeout(() => {
-            resolve(products)
-        }, 1500); 
-    })
+    useEffect(() => {
+        const task = new Promise ((resolve) => {
 
-    task
-    .then((result)=>{
-        setCurrentProducts(result)
-    })
+            setTimeout(() => {
+    
+            if(categoryId) {
+                resolve(products.filter(element => element.category === categoryId))
+            } else {
+                resolve(products)
+            }
+            }, 1500);
+          })
+    
+          task
+          .then((result)=>{
+            setCurrentProducts(result)
+          })
+    }, [categoryId])
  
     return (
         <div className="Container container row justify-content-center mx-auto">
