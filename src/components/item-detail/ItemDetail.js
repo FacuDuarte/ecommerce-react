@@ -11,7 +11,7 @@ const ItemDetail = ({nombre, img, precio, plataforma, id, stock}) => {
                     <p className="card-text">Plataforma: {plataforma}</p>
                     <p className="card-text">ID: {id}</p>
                     <p className="card-text">Stock: {stock}</p>
-                    <ItemCount stock={stock} inicial={1}/>
+                    <ItemCount stock={stock} inicial={0}/>
                 </div>
             </div>
         </div>

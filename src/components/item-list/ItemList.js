@@ -1,57 +1,53 @@
-import { products } from '../data/products'
-import React, { useState, useEffect } from 'react'
-import Item from '../item/Item'
-import './ContainerItems.css'
-import { useParams } from 'react-router'
+import { products } from "../data/products";
+import React, { useState, useEffect } from "react";
+import Item from "../item/Item";
+import "./ContainerItems.css";
+import { useParams } from "react-router";
 
 const ItemList = () => {
+  const { categoryId } = useParams();
 
-    const {categoryId} = useParams()
+  const [currentProducts, setCurrentProducts] = useState([]);
 
-    const [currentProducts, setCurrentProducts] = useState([]);
-    
-    useEffect(() => {
+  useEffect(() => {
+    if (categoryId) {
+      const task = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(products);
+        }, 1500);
+      });
+
+      task.then((result) => {
+        setCurrentProducts(result);
+      });
+    }
+  }, [categoryId]);
+
+  useEffect(() => {
+    const task = new Promise((resolve) => {
+      setTimeout(() => {
         if (categoryId) {
-            const task = new Promise ((resolve) => {
-                setTimeout(() => {
-                    resolve(products)
-                }, 1500);
-            })
-
-            task
-            .then((result)=>{
-                setCurrentProducts(result)
-            })
+          resolve(
+            products.filter((element) => element.category === categoryId)
+          );
+        } else {
+          resolve(products);
         }
-    }, [categoryId])
+      }, 1500);
+    });
 
-    
-    useEffect(() => {
-        const task = new Promise ((resolve) => {
+    task.then((result) => {
+      setCurrentProducts(result);
+    });
+  }, [categoryId]);
 
-            setTimeout(() => {
-    
-            if(categoryId) {
-                resolve(products.filter(element => element.category === categoryId))
-            } else {
-                resolve(products)
-            }
-            }, 1500);
-          })
-    
-          task
-          .then((result)=>{
-            setCurrentProducts(result)
-          })
-    }, [categoryId])
- 
-    return (
-        <div className="Container container row justify-content-center mx-auto">
-            {currentProducts.map(products => (
-                <Item key={products.id} {...products} />
-            ))}
-        </div>
-    )
-}
+  return (
+    <div className="Container container row justify-content-center mx-auto">
+      {currentProducts.map((products) => (
+        <Item key={products.id} {...products} />
+      ))}
+    </div>
+  );
+};
 
-export default ItemList
+export default ItemList;
