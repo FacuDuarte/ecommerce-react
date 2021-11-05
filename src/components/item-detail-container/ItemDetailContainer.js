@@ -8,6 +8,7 @@ export const ItemDetailContainer = () => {
     const { itemId } = useParams()
     
     const [item, setItem] = useState(null);
+    const [quantity, setQuantity] = useState(0);
 
    useEffect(() => {
     if(itemId) {
@@ -26,7 +27,7 @@ export const ItemDetailContainer = () => {
 
     return (
         <div>
-            <ItemDetail {...item} />
+            <ItemDetail {...item} quantity={quantity} setQuantity={setQuantity}/>
         </div>
     )
 }

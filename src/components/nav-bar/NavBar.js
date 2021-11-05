@@ -33,6 +33,9 @@ export const NavBar = () => {
             <li className="nav-item">
               <NavLink to="/category/ps4" activeClassName="selected">Ps4</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/cart" activeClassName="selected">Carrito</NavLink>
+            </li>
             <CartWidjet cantidad={4} />
           </ul>
         </div>
