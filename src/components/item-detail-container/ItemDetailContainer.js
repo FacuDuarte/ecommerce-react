@@ -1,7 +1,7 @@
-import { products } from '../data/products'
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../item-detail/ItemDetail'
 import { useParams } from 'react-router'
+import { getFirestore } from '../../firebase'
 
 export const ItemDetailContainer = () => {
     
@@ -11,18 +11,18 @@ export const ItemDetailContainer = () => {
     const [quantity, setQuantity] = useState(0);
 
    useEffect(() => {
-    if(itemId) {
-        const task = new Promise ((resolve) => {
-            setTimeout(() => {
-                resolve(products[itemId])
-            }, 2000); 
-        })
-    
-        task
-        .then((result)=>{
-            setItem(result)
-        })
-    }
+    const db = getFirestore()
+    const itemCollection = db.collection("products")
+    const currentItem = itemCollection.doc(itemId)
+
+    currentItem.get().then(document => {
+        if (!document.exists){
+            console.log("no item")
+            return
+        }
+        setItem({id : document, ...document.data()})
+    })
+
    }, [itemId]);
 
     return (
