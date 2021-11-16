@@ -3,11 +3,9 @@ import { CartContext } from "../cart-context/CartContext";
 import Cart from "../cart/Cart";
 import { Link } from "react-router-dom";
 import { getFirestore } from "../../firebase";
-import { useState } from "react";
 
 const CartContainer = () => {
   const { itemsCart, clear } = useContext(CartContext);
-  const [orderCreatedId, setorderCreatedId] = useState(null)
 
   const clearItems = () => {
     clear();
@@ -51,12 +49,7 @@ const CartContainer = () => {
     const batch = db.batch()
 
     orders.add(newOrder).then((response) => {
-      itemsCart.forEach(({item, quantity}) => {
-        const docRef = db.collection("products").doc(item.id)
-        batch.update(docRef, {stock: item.stock - quantity})
-      })
-      batch.commit()
-      setorderCreatedId(response.id)
+    console.log({response})
   })
 
     console.log("nueva orden:", newOrder)
@@ -74,9 +67,6 @@ const CartContainer = () => {
           <button onClick={clearItems}>Limpiar carrito</button>
           <h2>Su total es de: {sumar()}</h2>
           <button onClick={finishPurchase}>Finalizar compra</button>
-          {orderCreatedId && (
-            <h3>Tu orden con el id: {orderCreatedId} ha sido creada</h3>
-          )}
         </>
       ) : (
         <>

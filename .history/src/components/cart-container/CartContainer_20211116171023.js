@@ -74,9 +74,6 @@ const CartContainer = () => {
           <button onClick={clearItems}>Limpiar carrito</button>
           <h2>Su total es de: {sumar()}</h2>
           <button onClick={finishPurchase}>Finalizar compra</button>
-          {orderCreatedId && (
-            <h3>Tu orden con el id: {orderCreatedId} ha sido creada</h3>
-          )}
         </>
       ) : (
         <>

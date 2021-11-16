@@ -20,7 +20,7 @@ export const ItemDetailContainer = () => {
             console.log("no item")
             return
         }
-        setItem({id : document, ...document.data()})
+        setItem({id : document.id, ...document.data()})
     })
 
    }, [itemId]);
