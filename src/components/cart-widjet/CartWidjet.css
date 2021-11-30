@@ -1,0 +1,11 @@
+.iconCart{
+    color: white;
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.iconCart:hover{
+    color: orange;
+}

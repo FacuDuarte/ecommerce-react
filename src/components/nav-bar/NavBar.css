@@ -1,3 +1,15 @@
-.selected {
+.navLink{
+    color: white;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.navLink:hover{
     color: orange;
+}
+
+.logo {
+    font-size: 24px;
 }

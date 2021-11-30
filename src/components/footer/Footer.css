@@ -1,0 +1,19 @@
+.bgFooter {
+    background-color: #212529;
+}
+
+.iconsFooter {
+    color: white;
+    font-size: 28px;
+    margin: 8px;
+}
+
+.iconsFooter:hover{
+    color: orange;
+}
+
+.textFooter {
+    color: white;
+    margin: 0px;
+    padding: 8px;
+}

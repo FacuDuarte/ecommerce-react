@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
 import { CartContext } from "../cart-context/CartContext";
+import "./CartWidjet.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 export const CartWidjet = ( ) => {
     const { itemsCart } = useContext(CartContext);
@@ -14,10 +18,12 @@ export const CartWidjet = ( ) => {
     
 
     return (
-        <li style={{visibility: totalCart() > 0 ? "visible" : "hidden"}}>
-            <box-icon name='cart-alt'></box-icon>
-            <p>{totalCart()}</p>
-        </li>
+        <div style={{visibility: totalCart() > 0 ? "visible" : "hidden"}}>
+        <Link to="/cart" className="iconCart">
+            <FontAwesomeIcon icon={faCartArrowDown} />
+            <p style={{paddingLeft: "3px"}}>{totalCart()}</p>
+        </Link>
+        </div>
     )
 }
 

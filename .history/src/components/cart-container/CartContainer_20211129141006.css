@@ -1,0 +1,11 @@
+.cartEmpty {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.btnCart {
+    width: 30%;
+}

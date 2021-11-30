@@ -1,0 +1,13 @@
+.Container{
+    position: relative;
+}
+
+.loader{
+    width: 100px;
+    height: 100px;
+    border: solid 5px #064555;
+}
+
+.message{
+
+}

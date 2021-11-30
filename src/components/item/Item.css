@@ -1,0 +1,22 @@
+.button {
+    background-color: orange;
+    border-radius: 12px;
+}
+
+.buttonText{
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.buttonText:hover{
+    color: black;
+}
+
+.bgCard {
+    background-color: #212529;
+}
+
+.bgText {
+    color: white;
+}
