@@ -1,9 +1,0 @@
-.cartEmpty {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.btnCart {
-    width: 30%;
-}
