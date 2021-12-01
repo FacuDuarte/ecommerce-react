@@ -74,7 +74,6 @@ const CartContainer = () => {
     console.log("nueva orden:", newOrder)
 
     showModal()
-    showAlert()
   }
 
 
@@ -83,16 +82,6 @@ const CartContainer = () => {
       setModal(true)
     }
     else setModal(false)
-  }
-
-  const showAlert = () => {
-    swal({
-      title:"Tu orden a sido creada, id:",
-      text: orderCreatedId,
-      icon: "success",
-      button: "Aceptar",
-      timer: "2000",
-    })
   }
 
   return (

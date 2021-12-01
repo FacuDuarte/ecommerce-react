@@ -87,11 +87,9 @@ const CartContainer = () => {
 
   const showAlert = () => {
     swal({
-      title:"Tu orden a sido creada, id:",
-      text: orderCreatedId,
-      icon: "success",
+      text: "Tu orden con el id: " +orderCreatedId+ "ha sido creada",
+      icon: "succes",
       button: "Aceptar",
-      timer: "2000",
     })
   }
 

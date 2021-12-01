@@ -91,7 +91,6 @@ const CartContainer = () => {
       text: orderCreatedId,
       icon: "success",
       button: "Aceptar",
-      timer: "2000",
     })
   }
 

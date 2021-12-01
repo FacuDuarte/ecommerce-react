@@ -7,7 +7,6 @@ import { useState } from "react";
 import "./CartContainer.css"
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import swal from 'sweetalert';
 
 const CartContainer = () => {
   const { itemsCart, clear } = useContext(CartContext);
@@ -15,11 +14,10 @@ const CartContainer = () => {
   const [modal, setModal] = useState(false)
 
   const [dataForm, setDataForm] = useState({
-    name: "",
-    phone: "",
-    email: ""
+
   })
  
+
   const clearItems = () => {
     clear();
   };
@@ -43,15 +41,14 @@ const CartContainer = () => {
         name: item.nombre,
         price: item.precio
       },
-      quantity,
-      total: quantity * item.precio,
+      quantity
     }))
 
     const newOrder = {
       buyer: {
-        name: dataForm.name,
-        phone: dataForm.phone,
-        email: dataForm.email
+        name: "Facu",
+        phone: 1231234,
+        email: "facu@facu.com"
       },
       items: newItems,
       total: sumar(),
@@ -72,9 +69,6 @@ const CartContainer = () => {
   })
 
     console.log("nueva orden:", newOrder)
-
-    showModal()
-    showAlert()
   }
 
 
@@ -83,16 +77,6 @@ const CartContainer = () => {
       setModal(true)
     }
     else setModal(false)
-  }
-
-  const showAlert = () => {
-    swal({
-      title:"Tu orden a sido creada, id:",
-      text: orderCreatedId,
-      icon: "success",
-      button: "Aceptar",
-      timer: "2000",
-    })
   }
 
   return (
@@ -121,12 +105,12 @@ const CartContainer = () => {
           <form className="modalForm p-2">
             <button className="button btn closeButton" onClick={showModal}>X</button>
             <label htmlFor="mail" className="formText">Ingrese su mail</label>
-            <input type="text" id="mail" onChange={(e) => setDataForm({...dataForm, email: e.target.value})}/>
+            <input type="text" id="mail" onChange={} />
             <label htmlFor="name" className="formText">Ingrese nombre</label>
-            <input type="text" id="name" onChange={(e) => setDataForm({...dataForm, name: e.target.value})}/>
+            <input type="text" id="name" />
             <label htmlFor="phone" className="formText">Ingrese su número de teléfono</label>
-            <input type="text" id="phone" onChange={(e) => setDataForm({...dataForm, phone: e.target.value})}/>
-            <button className="button btn m-2" onClick={finishPurchase} disabled={dataForm.email.length < 5 ? true : false}>Registrarse</button>
+            <input type="text" id="phone" />
+            <button className="button btn m-2" type="submit">Registrarse</button>
           </form>
         </div>
       )}

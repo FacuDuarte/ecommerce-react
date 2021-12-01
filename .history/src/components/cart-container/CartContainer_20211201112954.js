@@ -7,7 +7,6 @@ import { useState } from "react";
 import "./CartContainer.css"
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import swal from 'sweetalert';
 
 const CartContainer = () => {
   const { itemsCart, clear } = useContext(CartContext);
@@ -20,6 +19,7 @@ const CartContainer = () => {
     email: ""
   })
  
+
   const clearItems = () => {
     clear();
   };
@@ -74,7 +74,6 @@ const CartContainer = () => {
     console.log("nueva orden:", newOrder)
 
     showModal()
-    showAlert()
   }
 
 
@@ -83,16 +82,6 @@ const CartContainer = () => {
       setModal(true)
     }
     else setModal(false)
-  }
-
-  const showAlert = () => {
-    swal({
-      title:"Tu orden a sido creada, id:",
-      text: orderCreatedId,
-      icon: "success",
-      button: "Aceptar",
-      timer: "2000",
-    })
   }
 
   return (
